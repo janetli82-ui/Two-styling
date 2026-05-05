@@ -1,0 +1,13 @@
+*{
+  box-sizing: border-box;
+}
+
+html{
+  height:100vh;
+}
+
+body{
+  background-color: #0f0d0b;
+  margin: 0;
+  height: 100%;
+}
