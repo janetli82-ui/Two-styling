@@ -21,7 +21,5 @@ export type TabsProps = {
   updateFunction: (page: "video" | "teas" | "favorite") => void;
 }
 
-export type TeaContainerProps = {
-  selectedId: number[];
-  updateFunction: (increment: number, id: number) => void; 
-}
+export type TeaContainerProps = Pick<TeaProps, "selectedId" | "updateFunction">
+

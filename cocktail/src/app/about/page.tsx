@@ -71,7 +71,7 @@ const About = () => {
             gap: 1,
           }}
         >
-          <span style={{ fontSize: "1.2rem" }}>📞</span> +1 (555) 123-4567
+          <span style={{ fontSize: "1.2rem" }}>📞</span> + (46) 123-4567
         </Typography>
         <Typography
           sx={{

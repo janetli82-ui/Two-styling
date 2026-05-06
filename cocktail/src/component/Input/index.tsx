@@ -12,19 +12,22 @@ type inputProps = {
 
 export default function Input({onSearch}:inputProps) {
   const [input, setInput] = useState<string>("")
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value)
   }
- const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    onSearch(input);
-  }
-};
 
-const handleClick = () => {
-  onSearch(input);
-};
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onSearch(input);
+    }
+  };
+
+  const handleClick = () => {
+    onSearch(input);
+  };
+
   return (
     <Paper
       component="form"

@@ -1,4 +1,4 @@
-export function setItem(key: string, value: unknown) {
+export function setSavedItem(key: string, value: unknown) {
   try{
     window.localStorage.setItem(key, JSON.stringify(value));
   }catch(error){
@@ -6,7 +6,7 @@ export function setItem(key: string, value: unknown) {
   }
 }
 
-export function getItem(key: string){
+export function getSavedItem(key: string){
   try{
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : undefined;

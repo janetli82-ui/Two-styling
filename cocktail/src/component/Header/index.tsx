@@ -1,5 +1,5 @@
 "use client"
-
+import { usePathname } from 'next/navigation';
 import { Link } from '@mui/material';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -14,10 +14,20 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 
+
 const pages = ['Home', 'Cocktail', 'About'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  
+  const pathname = usePathname()
+  const isActive = (page:string) => {
+    if (page.toLowerCase() === 'home') {
+    return pathname === '/';
+    }
+    return pathname === `/${page.toLowerCase()}`;
+  };
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -74,11 +84,11 @@ function Header() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
+              sx={{ display: { xs: 'block', md: 'none' }}}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link href={page.toLowerCase() === "home"? "/" : `/${page.toLowerCase()}`} underline="none" ><Typography sx={{ textAlign: 'center' }}>{page}</Typography></Link>
+                <MenuItem key={page} onClick={handleCloseNavMenu} sx={{backgroundColor: isActive(page) ? 'rgba(255, 160, 0, 0.2)' : 'transparent'}}>
+                  <Link href={page.toLowerCase() === "home"? "/" : `/${page.toLowerCase()}`} underline='none'><Typography sx={{ color: 'black', textAlign: 'center'}}>{page}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -107,7 +117,7 @@ function Header() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: '#D1B899', display: 'block' }}
+                sx={{ my: 2, color: '#D1B899', display: 'block', backgroundColor: isActive(page) ? 'rgba(0, 230, 200, 0.15)' : 'transparent'}}
                 href={page.toLowerCase() === "home"? "/" : `/${page.toLowerCase()}`}
               >
                 {page}

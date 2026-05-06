@@ -1,7 +1,7 @@
 import type { TabsProps } from "../../types/types"
 
 
-const Tabs = ({count, updateFunction, page}:TabsProps) => {
+const Tabs = ({count, page, updateFunction}:TabsProps) => {
   return(
     <div className="flex justify-center gap-3 mt-10">
       <button className={page === "video" ? "active" : ""} onClick={() => updateFunction("video")}>🎥 Introduce</button>

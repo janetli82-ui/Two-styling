@@ -18,6 +18,6 @@ export const tea = [
   { id: 17, name: "Jasmine Tea", region: "Fujian / Guangxi", flavor: "floral, jasmine, sweet", benefit: "Reduces anxiety, improves sleep", price: 350, image:"jasmine.jpg"},
   { id: 18, name: "Osmanthus Oolong", region: "Fujian", flavor: "osmanthus, creamy, sweet", benefit: "Brightens skin, improves mood", price: 680, image:"oolong.jpg"},
   { id: 19, name: "Chrysanthemum Pu'er", region: "Yunnan", flavor: "floral, earthy, smooth", benefit: "Clears heat, benefits eyesight", price: 420, image:"juhua.jpg"},
-  { id: 20, name: "Rose Black Tea", region: "Yunnan", flavor: "rose, malty, sweet", benefit: "Boosts blood circulation, relieves menstrual discomfort", price: 400, image:"rose.webp"}
+  { id: 20, name: "Rose Black Tea", region: "Yunnan", flavor: "rose, malty, sweet", benefit: "Boosts blood circulation", price: 400, image:"rose.webp"}
 ];
 

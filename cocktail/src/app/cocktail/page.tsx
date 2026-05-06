@@ -18,17 +18,21 @@ const Cocktail = () => {
       if(!drinkData){
         console.log("No found this cocktail")
       }
-      setSelectedCockTail({
+
+      const selectedCockTailData: CocktailProps = ({
         name: drinkData.strDrink,
         category: drinkData.strCategory,
         alcoholic: drinkData.strAlcoholic,
         instructions: drinkData.strInstructions,
         image: drinkData.strDrinkThumb,
       });
+      setSelectedCockTail(selectedCockTailData)
     } catch (error) {
       console.log(error);
     }
   };
+
+
   return (
     <Container
       maxWidth="md"
