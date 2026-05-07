@@ -4,7 +4,7 @@ import DrinkingCard from "../../component/Card";
 import { Box, Container, Paper, Typography } from "@mui/material";
 import type { CocktailProps } from "@/types/types";
 import Input from "@/component/Input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Cocktail = () => {
   const [selectedCockTail, setSelectedCockTail] = useState<CocktailProps | null>(null);
@@ -27,11 +27,21 @@ const Cocktail = () => {
         image: drinkData.strDrinkThumb,
       });
       setSelectedCockTail(selectedCockTailData)
+      localStorage.setItem("save-cocktail", JSON.stringify(selectedCockTailData));
     } catch (error) {
       console.log(error);
     }
   };
-
+  
+  useEffect(()=>{
+    const savedCocktail:string | null = localStorage.getItem("save-cocktail")
+    if(savedCocktail){
+      const returnedCocktail: CocktailProps = JSON.parse(savedCocktail!)
+      setSelectedCockTail(returnedCocktail)
+    }else{
+      handleSearch("hot")
+    }
+  }, [])
 
   return (
     <Container
@@ -67,11 +77,7 @@ const Cocktail = () => {
               textAlign: "center",
             }}
           >
-            {selectedCockTail ? (
-              <DrinkingCard {...selectedCockTail} />
-            ) : (
-              <Typography variant="h2">Search for a cocktail</Typography>
-            )}
+            {selectedCockTail && <DrinkingCard {...selectedCockTail} /> }
           </Box>
         </Paper>
     </Container>

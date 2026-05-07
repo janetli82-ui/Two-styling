@@ -10,24 +10,28 @@ type inputProps = {
   onSearch: (value: string) => void;
 }
 
-export default function Input({onSearch}:inputProps) {
+export default function Input({ onSearch }:inputProps) {
   const [input, setInput] = useState<string>("")
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value)
+    localStorage.setItem("inputValue", JSON.stringify(input))
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       onSearch(input);
+      localStorage.setItem("inputValue", JSON.stringify(input))
     }
   };
 
   const handleClick = () => {
     onSearch(input);
+    localStorage.setItem("inputValue", JSON.stringify(input))
   };
 
+  
   return (
     <Paper
       component="form"
